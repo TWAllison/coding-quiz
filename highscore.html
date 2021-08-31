@@ -1,50 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Coding Quiz </title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>coding quiz score</title>
 </head>
 
 <body>
-
-    <div class="scores"> <a href="./highscore.html">Highscores</a></div>
-    <div class="timer">Time: <span id="time">0</span></div>
-
     <main class="wrapper">
-        <section id="start-page" class="start">
-            <h1 class="title">Coding Quiz</h1>
-            <p class="instructions">Answer as many questions in the given time. Time and Points are deducted for incorrect answers!</p>
-            <button id="start-btn">Begin Quiz</button>
-        </section>
-
-        <section id="questions" class="hide">
-            <h2 id="q">Questions</h2>
-            <div id="choices" class="choices"></div>
-        </section>
-
-        <section id="end" class="hide">
-            <h2>Finished!</h2>
-            <p>
-                Your Score
-                <span id="score-total"></span>
-            </p>
-
-            <P>
-                Enter Your Initials <input type="text" id="initials" max="3" />
-                <button id="submit">Submit</button>
-            </P>
-        </section>
-
-        <section id="feedback" class="feedback hide"></section>
-
+        <h1></h1>
+        <ol id="highscores"></ol>
+        <a href="./index.html"><button>Go Back</button></a>
+        <button id="clear"></button>
     </main>
-
-    <script src="./assets/js/script.js"></script>
-
+    <script src="./assets/js/highscore.js"></script>
 </body>
-
 </html>
