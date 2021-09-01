@@ -12,13 +12,13 @@ var initialsEL = document.querySelector('#initials');
 var feedbackEl = document.querySelector('#feedback');
 var time = 120;
 var timerIntervalSet;
-var currentQIndex = 0;
+var currentQuestionIndex = 0;
 
 //create a questions array with answers 
 var questionsArr = [
 
     {
-        q: "Why do JavaScript and Java have similar name?",
+        q: "Why do JavaScript and Java have similar names?",
         Choices: ["JavaScript is a stripped-down version of Java", "JavaScript's syntax is loosely based on Java's", "They both originated on the island of Java", "None of the above"],
         answer: "JavaScript's syntax is loosely based on Java's"
     },
@@ -85,26 +85,26 @@ var startQuiz = function () {
 
     questionsPageEl.style.display = "block";
 
-    timerInterval = setInterval(timeCountdown, 1000);
+    timerInterval = setInterval(timerCountdown, 1000);
 
     // get questions
     getQuestion();
 }
 //get questions from array
 var getQuestion = function () {
-    var currentQuestion = questionsArr[currentQIndex];
-    questionEl.textContent = currentQuestion.q;
+    var currentQuestion = questionsArr[currentQuestionIndex];
+    questionsEl.textContent = currentQuestion.q;
 
     choicesEl.innerHTML = "";
 
-    currentQuestion.choices.forEach(function (choice, i) {
+    currentQuestion.Choices.forEach(function(choice, i) {
         var choiceBtn = document.createElement("button");
-        choiceButton.setAttribute("class", "choice");
-        choiceButton.setAttribute("value", choice);
+        choiceBtn.setAttribute("class", "choice");
+        choiceBtn.setAttribute("value", choice);
 
-        choiceButton.textContent = i + 1 + ". " + choice;
+        choiceBtn.textContent = i + 1 + ". " + choice;
 
-        choiceButton.onclick = questionclicked;
+        choiceBtn.onclick = questionclicked;
 
         choicesEl.appendChild(choiceBtn);
     });
@@ -113,7 +113,7 @@ var getQuestion = function () {
 //check answer function with scoring and feedback
 var questionclicked = function () {
     //check if answer is correct
-    if (this.value === questionsArr[currentQIndex].answer) {
+    if (this.value === questionsArr[currentQuestionIndex].answer) {
         feedbackEl.textContent = "Correct!";
         time += 3;
     } else {
@@ -132,9 +132,9 @@ var questionclicked = function () {
         feedbackEl.setAttribute("class", "feedback hide");
     }, 1500);
 
-    currentQIndex++;
+    currentQuestionIndex++;
 
-    if (currentQIndex === questionsArr.length) {
+    if (currentQuestionIndex === questionsArr.length) {
         endQuiz();
     } else {
         getQuestion();
@@ -162,8 +162,8 @@ var timerCountdown = function () {
 }
 
 
-var saveHighscore = function () {
-    var initials = initialsEl.value;
+var saveHighscore = function() {
+    var initials = initialsEL.value;
 
     var highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
 

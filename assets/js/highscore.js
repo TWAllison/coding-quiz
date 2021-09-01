@@ -6,14 +6,13 @@ var showHighscore = function () {
         return b.score - a.score;
     });
 
-    highscore.array.forEach(function (score) {
+                              
+    highscore.forEach(function (score) {
         var scoreLi = document.createElement("li");
-        scoreLi.textContent = score.initials + " - " + score.score;
+        scoreLi.textContent = score.initials + " - " +score.score;
 
         var olEl = document.querySelector('#highscore');
         olEl.appendChild(scoreLi);
-
-
     });
 }
 
