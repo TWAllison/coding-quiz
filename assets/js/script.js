@@ -98,7 +98,7 @@ var getQuestion = function () {
     choicesEl.innerHTML = "";
 
     currentQuestion.choices.forEach(function (choice, i) {
-        var choicesBtn = document.createElement("button");
+        var choiceBtn = document.createElement("button");
         choiceButton.setAttribute("class", "choice");
         choiceButton.setAttribute("value", choice);
 
@@ -106,7 +106,7 @@ var getQuestion = function () {
 
         choiceButton.onclick = questionclicked;
 
-        choicesEl.appendChild(choicesBtn);
+        choicesEl.appendChild(choiceBtn);
     });
 
 }
@@ -141,7 +141,7 @@ var questionclicked = function () {
     }
 }
 //end quiz
-var endQuiz = function() {
+var endQuiz = function () {
     questionsPageEl.style.display = "none"; // hides questions page
 
     endEl.style.display = "block"; // show end page
@@ -151,7 +151,18 @@ var endQuiz = function() {
     scoreEL.textContent = time;
 }
 
-var timerCountdown = function() {
+var timerCountdown = function () {
+    timeEl.textContent = time;
+
+    if (time > 0) {
+        time--;
+    } else {
+        endQuiz();
+    }
+}
+
+
+var saveHighscore = function () {
     var initials = initialsEl.value;
 
     var highscore = JSON.parse(window.localStorage.getItem("highscore")) || [];
